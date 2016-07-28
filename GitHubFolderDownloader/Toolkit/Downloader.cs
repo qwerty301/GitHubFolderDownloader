@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -24,6 +24,8 @@ namespace GitHubFolderDownloader.Toolkit
 
             var segments = new Uri(url).Segments;
             var fileName = segments[segments.Length - 1];
+            fileName = fileName.Replace("%20", " ");
+            
             var filePath = Path.Combine(outFolder, fileName);
 
             if (File.Exists(filePath))
